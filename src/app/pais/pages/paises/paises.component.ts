@@ -8,23 +8,37 @@ import { PaisService } from '../../services/pais.service';
   styleUrls: ['./paises.component.css']
 })
 export class PaisesComponent {
-
   termino: string = '';
   hayError: boolean = false;
   paises: Country[] = [];
+  paisesSugeridos: Country[] = [];
+  mostrarSugerencias: boolean = false
 
-  constructor(private pais: PaisService) { }
+  constructor(private paisService: PaisService) { }
 
-  buscar() {
+  buscar( termino:string ) {
+    this.termino = termino
     this.hayError = false;
-    this.pais.buscarPais(this.termino)
+    this.paisService.buscarPais(termino)
     .subscribe((paises)=>{
       this.paises = paises;
       console.log(this.paises)
     }, (err)=>{
-      console.log(err)
+      console.error(err)
       this.hayError = true
       this.paises = []
+    })
+  }
+
+  sugerencias(termino:string){
+    this.hayError = false
+    this.mostrarSugerencias = true;
+    console.log(termino)
+    this.paisService.buscarPais( termino )
+    .subscribe(paises => this.paisesSugeridos = paises.splice(0,5),
+    (err)=>{
+      this.paisesSugeridos = [];
+      this.mostrarSugerencias = false;
     })
   }
   

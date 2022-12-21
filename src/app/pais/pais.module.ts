@@ -7,6 +7,8 @@ import { CapitalComponent } from './pages/capital/capital.component';
 import { PaisesComponent } from './pages/paises/paises.component';
 import { VerPaisComponent } from './pages/ver-pais/ver-pais.component';
 import { RegionComponent } from './pages/region/region.component';
+import { PaisTablaComponent } from './components/pais-tabla/pais-tabla.component';
+import { PaisInputComponent } from './components/pais-input/pais-input.component';
 
 
 
@@ -15,7 +17,9 @@ import { RegionComponent } from './pages/region/region.component';
     CapitalComponent,
     PaisesComponent,
     VerPaisComponent,
-    RegionComponent
+    RegionComponent,
+    PaisTablaComponent,
+    PaisInputComponent
   ],
   exports: [
     CapitalComponent,
